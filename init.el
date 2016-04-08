@@ -16,7 +16,7 @@
 (unless (file-exists-p elget-path)
   (make-directory elget-path))
 
-; add el-get to the load path, and install it if it doesn't exist
+;; add el-get to the load path, and install it if it doesn't exist
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
 (unless (require 'el-get nil 'noerror)
   (with-current-buffer
@@ -41,7 +41,7 @@
                     evil
                     powerline-evil
                     ;; anaconda-mode
-                    ))   
+                    ))
 (setq el-get-git-shallow-clone t) ;; We don't need to clone the entire
 (el-get 'sync my-packages) ;; then intsall!
 
@@ -57,7 +57,7 @@
 (require 'zenburn-theme) ;; set color-theme (in elfiles)
 (powerline-evil-center-color-theme)
 
-;; default values 
+;; default values
 (setq-default fill-column 79) ; number of characters until the fill
 (setq-default indent-tabs-mode nil) ; use spaces, not tabs
 (setq comment-style 'indent)
@@ -94,6 +94,7 @@
 (global-set-key (kbd "C-v")     'scroll-up-half)
 (global-set-key (kbd "M-v")     'scroll-down-half)
 (global-set-key [f6]            'revert-this-buffer)
+(global-set-key (kbd "C-c \\")  'indent-buffer)
 
 ;; keys for package dependent functions
 (global-set-key (kbd "C-c g")   'goto-last-change)
@@ -129,4 +130,3 @@
       helm-ff-file-name-history-use-recentf t)
 
 (helm-mode 1)
-

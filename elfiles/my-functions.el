@@ -81,13 +81,6 @@
   (revert-buffer nil t t)
   (message (concat "Reverted buffer " (buffer-name))))
 
-(defun iwb ()
-  "indent whole buffer"
-  (interactive)
-  (delete-trailing-whitespace)
-  (indent-region (point-min) (point-max) nil)
-  (untabify (point-min) (point-max)))
-
 (defun indent-buffer ()
   "Indents an entire buffer using the default intenting scheme."
   (interactive)
