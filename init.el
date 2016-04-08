@@ -32,6 +32,7 @@
                     goto-last-change
                     magit
                     helm-ag
+                    ag
                     exec-path-from-shell
                     markdown-mode
                     auto-complete
