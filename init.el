@@ -40,12 +40,12 @@
                     julia-mode
                     evil
                     powerline-evil
-                    ;; anaconda-mode
+                    anaconda-mode
                     ))
 (setq el-get-git-shallow-clone t) ;; We don't need to clone the entire
 (el-get 'sync my-packages) ;; then intsall!
 
-(exec-path-from-shell-initialize) ;; load PATH from shell
+;;(exec-path-from-shell-initialize) ;; load PATH from shell
 (add-to-list 'load-path "~/.emacs.d/elfiles/")
 
 ;; general appearence
@@ -68,45 +68,42 @@
 (setq org-log-done t) ;; show time in org-log
 (defalias 'yes-or-no-p 'y-or-n-p) ;; Simplify typing
 (winner-mode 1) ; winner-mode provides C-left: get back to previous window
+(require 'my-functions) ;; functions stored in elfiles/my-functions.el
 
-;; latex
 (require 'my-auctex)
 (add-hook 'LaTeX-mode-hook 'visual-line-mode)
 (add-hook 'LaTeX-mode-hook 'flyspell-mode)
 
 ;; hotkeys for emacs builtin
-(global-set-key (kbd "C-q")     'backward-kill-word)
-(global-set-key (kbd "C-w")     'delete-backward-char)
-(global-set-key (kbd "C-x C-k") 'kill-region)
-(global-set-key [f1]            'eshell)
-(global-set-key (kbd "C-c a")   'org-agenda)
-(global-set-key (kbd "C-c f")   'windmove-right)
-(global-set-key (kbd "C-c b")   'windmove-left)
-(global-set-key (kbd "C-c p")   'windmove-up)
-(global-set-key (kbd "C-c n")   'windmove-down)
+;; (global-set-key (kbd "C-q")     'backward-kill-word)
+;; (global-set-key (kbd "C-w")     'delete-backward-char)
+;; (global-set-key (kbd "C-x C-k") 'kill-region)
+;; (global-set-key [f1]            'eshell)
+;; (global-set-key (kbd "C-c a")   'org-agenda)
+;; (global-set-key (kbd "C-c l")   'windmove-right)
+;; (global-set-key (kbd "C-c h")   'windmove-left)
+;; (global-set-key (kbd "C-c k")   'windmove-up)
+;; (global-set-key (kbd "C-c j")   'windmove-down)
+;; (global-set-key (kbd "C-s")     'isearch-forward-regexp)
+;; (global-set-key (kbd "C-r")     'isearch-backward-regexp)
+;; hotkeys for custom function
+;; (global-set-key (kbd "C-v")     'scroll-up-half)
+;; (global-set-key (kbd "M-v")     'scroll-down-half)
+;; (global-set-key [f6]            'revert-this-buffer)
+;; (global-set-key (kbd "C-c \\")  'indent-buffer)
+
 (global-set-key (kbd "M-/")     'hippie-expand)
 (global-set-key (kbd "M-o")     'other-window)
-(global-set-key (kbd "C-s")     'isearch-forward-regexp)
-(global-set-key (kbd "C-r")     'isearch-backward-regexp)
-
-;; hotkeys for custom function
-(require 'my-functions) ;; functions stored in elfiles/my-functions.el
-(global-set-key (kbd "C-v")     'scroll-up-half)
-(global-set-key (kbd "M-v")     'scroll-down-half)
-(global-set-key [f6]            'revert-this-buffer)
-(global-set-key (kbd "C-c \\")  'indent-buffer)
-
-;; keys for package dependent functions
 (global-set-key (kbd "C-c g")   'goto-last-change)
 (global-set-key (kbd "C-c [")   'er/expand-region)
 (global-set-key [f10]           'magit-status)
 
-;; window system special
-(if window-system (tool-bar-mode 0))
-(if window-system (scroll-bar-mode 0))
-(when window-system (global-set-key (kbd "C-x C-c") 'ask-before-closing))
-(when window-system (global-set-key (kbd "C-=")     'text-scale-increase))
-(when window-system (global-set-key (kbd "C--")     'text-scale-decrease))
+;; ;; window system special
+;; (if window-system (tool-bar-mode 0))
+;; (if window-system (scroll-bar-mode 0))
+;; (when window-system (global-set-key (kbd "C-x C-c") 'ask-before-closing))
+;; (when window-system (global-set-key (kbd "C-=")     'text-scale-increase))
+;; (when window-system (global-set-key (kbd "C--")     'text-scale-decrease))
 
 ;; helm setup
 (require 'helm-config)
@@ -130,3 +127,4 @@
       helm-ff-file-name-history-use-recentf t)
 
 (helm-mode 1)
+(evil-mode 1)
